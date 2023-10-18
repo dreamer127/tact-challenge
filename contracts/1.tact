@@ -1,4 +1,5 @@
 import "@stdlib/deploy";
+
 /*
   TASK 1 - Counter 
   Implement a counter contract that will have 2 opcodes ('Add' / 'Subtract'),
@@ -25,7 +26,9 @@ contract Task1 with Deployable {
         self.counter = self.counter + 1;
     }
 
-    receive(msg: Subtract){}
+    receive(msg: Subtract){
+        self.counter = self.counter - 1;
+    }
 
     get fun counter(): Int {}
 }
