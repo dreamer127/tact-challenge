@@ -1,5 +1,4 @@
 import "@stdlib/deploy";
-
 /*
   TASK 1 - Counter 
   Implement a counter contract that will have 2 opcodes ('Add' / 'Subtract'),
@@ -8,28 +7,25 @@ import "@stdlib/deploy";
 */
 
 message Add {
-  queryId: Int as uint64;
-  number: Int as uint32;
+    queryId: Int as uint64;
+    number: Int as uint32;
 }
-
 message Subtract {
-  queryId: Int as uint64;
-  number: Int as uint32;
+    queryId: Int as uint64;
+    number: Int as uint32;
 }
 
 contract Task1 with Deployable {
     counter: Int as int32;
-
-    init() {
-      self.counter = 0;
+    init(){
+        self.counter = 0;
     }
 
-    receive(msg: Add) {
-    }
-    
-    receive(msg: Subtract) {
+    receive(msg: Add){
+        self.counter = self.counter + 1;
     }
 
-    get fun counter(): Int {
-    }
+    receive(msg: Subtract){}
+
+    get fun counter(): Int {}
 }
